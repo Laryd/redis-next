@@ -1,39 +1,33 @@
-import { NextRequest } from "next/server"
+import { NextRequest, NextResponse } from "next/server";
 import { nanoid } from "nanoid";
 import { redis } from "@/lib/redis";
 
 export const POST = async (req: NextRequest) => {
-    try {
-        const body = await req.json()
+  try {
+    const body = await req.json();
 
-        const {text, tags} = body
+    const { text, tags } = body;
 
-        const commentId = nanoid()
+    const commentId = nanoid();
 
-        //add comment to list
-        await redis.rpush("comments", commentId) //right push, adds to the tailwind
+    // Add comment to list
+    await redis.rpush("comments", commentId);
 
-        //add tags to comments
-        await redis.sadd(`tags:${commentId}`, tags)
+    // Add tags to comments
+    await redis.sadd(`tags:${commentId}`, tags);
 
-        //retrieve and store comment details
+    // Retrieve and store comment details
+    const comment = {
+      text,
+      timestamp: new Date(),
+      author: req.cookies.get("userId")?.value,
+    };
 
-        const comment = {
-            text,
-            timestamp: new Date(),
-            author: req.cookies.get('userId')?.value
-        }
+    await redis.hset(`comment_details:${commentId}`, comment);
 
-        console.log(req.cookies.get("userId"))
-
-       
-
-       await redis.hset(`comment_details:${commentId}`, comment);
-      
-         
-        return new Response("OK")
-
-    } catch (err) {
-        console.error(err)
-    }
-}
+    return new Response("OK");
+  } catch (err) {
+    console.error(err);
+    return new Response("Error", { status: 500 }); // Return an error response
+  }
+};
