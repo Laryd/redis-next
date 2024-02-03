@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.5](https://github.com/Laryd/redis-next/compare/v0.1.4...v0.1.5) (2024-02-03)
+
+
+### Features
+
+* optimization remove many awaits and comments page add ([1acaf53](https://github.com/Laryd/redis-next/commit/1acaf53c07f3ca4f136629bf5de4467c6889d682))
+
 ### [0.1.4](https://github.com/Laryd/redis-next/compare/v0.1.3...v0.1.4) (2024-02-03)
 
 
