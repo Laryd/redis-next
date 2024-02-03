@@ -1,8 +1,8 @@
-import { NextRequest, NextResponse } from "next/server"
+import { NextRequest } from "next/server"
 import { nanoid } from "nanoid";
 import { redis } from "@/lib/redis";
 
-export const POST = async (req: NextRequest, res: NextResponse) => {
+export const POST = async (req: NextRequest) => {
     try {
         const body = await req.json()
 
@@ -21,8 +21,10 @@ export const POST = async (req: NextRequest, res: NextResponse) => {
         const comment = {
             text,
             timestamp: new Date(),
-            // author: req.cookies.get('userId')?.value
+            author: req.cookies.get('userId')?.value
         }
+
+        console.log(req.cookies.get("userId"))
 
        
 

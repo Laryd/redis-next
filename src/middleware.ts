@@ -5,11 +5,13 @@ import { nanoid } from "nanoid";
 export function middleware(req: NextRequest) {
   const userId = req.cookies.get("userId");
 
-  const res = NextResponse.next();
+  const res = NextResponse.next(req);
 
   if (!userId) {
     req.cookies.set("userId", nanoid());
+    
   }
+ 
 
   return res;
 }
