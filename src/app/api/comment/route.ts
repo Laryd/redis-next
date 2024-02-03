@@ -12,14 +12,14 @@ export const POST = async (req: NextRequest) => {
     // Retrieve and store comment details
     const comment = {
       text,
+      tags,
       timestamp: new Date(),
       author: req.cookies.get("userId")?.value,
     };
     
     await Promise.all([
         redis.rpush("comments", commentId),
-        redis.sadd(`tags:${commentId}`, tags),
-        redis.hset(`comment_details:${commentId}`, comment)
+        redis.json.set(`comment:${commentId}`, '$', comment)
     ])
 
 
