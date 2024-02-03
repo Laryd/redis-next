@@ -1,13 +1,13 @@
 {
   "name": "myredis",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "release": "standard-release"
+    "release": "standard-version"
   },
   "dependencies": {
     "next": "14.1.0",
