@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.4](https://github.com/Laryd/redis-next/compare/v0.1.3...v0.1.4) (2024-02-03)
+
+
+### Bug Fixes
+
+* req to res cookie storage fix ([2626d27](https://github.com/Laryd/redis-next/commit/2626d2744be4c817b512a365a8a69fe914db68b8))
+
 ### [0.1.3](https://github.com/Laryd/redis-next/compare/v0.1.2...v0.1.3) (2024-02-03)
 
 
